@@ -3,14 +3,13 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 export default {
-	checkInterval: 5 * 1000, // 60 seconds (adjust as needed)
+	checkInterval: 10 * 1000, // 60 seconds (adjust as needed)
 	httpMonitor: {
 		urls: [
 			{
-				id: 'example-site', // Unique identifier for the monitor
-				name: 'Example Site',
-				description: 'This is an example website', // Optional description
-				url: 'https://www.example.com',
+				id: 'website', // Unique identifier for the monitor
+				name: 'Website',
+				url: 'https://gegenlicht.net',
 				method: 'GET', // HTTP method (default: GET)
 				expectStatus: 200, // Expected HTTP status code (default: 200)
 				followRedirect: false, // Follow redirects (default: false)
@@ -24,21 +23,16 @@ export default {
 	},
 	dnsMonitor: {
 		sites: [
-			{
-				name: "API",
-				url: "https://www.example.com",
-				dnsConfig: {
-					host: "example.com", // The domain to resolve
-					recordType: "A", // The type of DNS record (A, AAAA, MX, etc.)
-					expectedValue: "93.184.215.13", // The expected IP address or value
-				},
-			},
-			// Add more sites here
 		],
 	},
 	portMonitor: {
 		timeout: 5000, // Timeout in milliseconds
 		sites: [
+			{
+				name: "IMAP",
+				url: "https://mail.gegenlicht.net",
+				port: 143,
+			}
 		],
 	},
 	pingMonitor: {
@@ -46,9 +40,9 @@ export default {
 		sites: [
 		],
 	},
-	testMode: false, // Set to true for testing, false for actual deployment
+	testMode: true, // Set to true for testing, false for actual deployment
 	deployment: {
-		method: 'local', // Default deployment method (local, ftp, or git)
+		method: 'git', // Default deployment method (local, ftp, or git)
 	},
 	escalationThreshold: 5, // Number of consecutive failures before escalating to 'down'
 	initialDelay: 2, // Number of initial consecutive failures to ignore (optional)

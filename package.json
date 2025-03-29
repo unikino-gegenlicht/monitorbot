@@ -4,7 +4,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./index.js"
   },
   "keywords": [],
   "author": "",
@@ -18,5 +19,11 @@
     "ftp": "^0.3.10",
     "ping": "^0.4.4",
     "simple-git": "^3.27.0"
+  },
+  "volta": {
+    "node": "22.14.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.2"
   }
 }

@@ -1,5 +1,5 @@
 import net from 'net';
-import config from '../config.js';
+import config from '../../config.js';
 import IncidentManager from '../utils/incidentManager.js';
 import chalk from 'chalk';
 
@@ -13,7 +13,7 @@ async function portMonitor(site) {
 
 	try {
 		await new Promise((resolve, reject) => {
-			client.connect(site.portConfig.port, site.url.replace(/https?:\/\//, ''), () => {
+			client.connect(site.port, site.url.replace(/https?:\/\//, ''), () => {
 				logStatus(`Port Check successful`, 'success');
 				resolve();
 			});
@@ -53,6 +53,11 @@ async function portMonitor(site) {
 			console.log(
 				chalk.yellow(
 					'  [TEST MODE] Would create or update incident: port-connectivity'
+				)
+			);
+			console.log(
+				chalk.yellow(
+					`  [Error] ${error.message}`
 				)
 			);
 		}

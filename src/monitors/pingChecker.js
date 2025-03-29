@@ -1,5 +1,5 @@
 const ping = require('ping');
-const config = require('../config');
+const config = require('../../config');
 const IncidentManager = require('../utils/incidentManager');
 
 async function pingMonitor(site) {
